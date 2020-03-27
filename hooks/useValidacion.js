@@ -17,7 +17,7 @@ const useValidacion = (initialState, validar, fn) => {
 
             guardarEnviarForm(false);
         }
-    }, []);
+    }, [errores]);
 
     // Función que se ejecuta conforme el usuario escribe algo
     const handleChange = (e) => {
@@ -36,13 +36,19 @@ const useValidacion = (initialState, validar, fn) => {
         guardarEnviarForm(true);
     }
 
+    // Funcion que ejecuta el blur
+    const handleBlur = () => {
+        const erroresValidacion = validar(valores);
+        guardarErrores(erroresValidacion);
+    }
+
     
     return {
         valores,
         errores,
-        enviarForm,
         handleChange,
-        handleSubmit
+        handleSubmit,
+        handleBlur
     }
 }
 
