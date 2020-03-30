@@ -1,6 +1,8 @@
 /* Este archivo ejecuta las funciones de Firebase */
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
+import 'firebase/storage';
 import firebaseConfig from './config';
 
 
@@ -14,6 +16,8 @@ class Firebase {
         }
 
         this.auth = app.auth();
+        this.db = app.firestore();
+        this.storage = app.storage();
 
     }
 
@@ -32,6 +36,12 @@ class Firebase {
     // Iniciar Sesión
     async login(email, password){
        return await this.auth.signInWithEmailAndPassword(email,password);
+    }
+
+
+    // Cerrar sesion
+    async cerrarSesion(){
+        await this.auth.signOut();
     }
 }
 

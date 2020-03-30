@@ -10,7 +10,6 @@ donde están todos los datos */
 const MyApp = (props) => {
 
     const usuario = useAutenticacion();
-    console.log(usuario);
     
     const { Component, pageProps } = props;
 
