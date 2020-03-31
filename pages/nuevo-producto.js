@@ -58,11 +58,17 @@ const NuevoProducto = () => {
     const producto = {
       nombre,
       empresa,
-      url,
+	  url,
+	  urlimagen,
       descripcion,
       votos: 0,
       comentarios: [],
-      date: Date.now()
+	  date: Date.now(),
+	  creador : {
+		  id: usuario.uid,
+		  nombre: usuario.displayName
+	  },
+	  haVotado: []
     }
 
     // Insertarlo en la base de datos
@@ -144,23 +150,21 @@ const NuevoProducto = () => {
 					  onChange = {handleChange}
 					  onBlur = {handleBlur}
 				  />
-			  </Campo>
-
-        {errores.imagen && <Error>{errores.imagen}</Error>}
+		</Campo>
         <Campo>
 				  <label htmlFor="imagen">Imagen</label>
-          <FileUploader 
-            accept = "image/*"
-					  id="imagen" 
-            name="imagen"
-            randomizeFilename
-            storageRef = {firebase.storage.ref("productos")}
-            onUploadStart = {handleUploadStart}
-            onUploadError = {handleUploadError}
-            onUploadSuccess = {handleUploadSuccess}
-            onProgress = {handleProgress}
+					<FileUploader 
+						accept = "image/*"
+						id="imagen" 
+						name="imagen"
+						randomizeFilename
+						storageRef = {firebase.storage.ref("productos")}
+						onUploadStart = {handleUploadStart}
+						onUploadError = {handleUploadError}
+						onUploadSuccess = {handleUploadSuccess}
+						onProgress = {handleProgress}
 
-				  />
+					/>
         </Campo>
 
         {errores.url && <Error>{errores.url}</Error>}
