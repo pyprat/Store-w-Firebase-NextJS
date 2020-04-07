@@ -1,36 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import Layout from '../layout/Layout';
 import DetallesProducto from '../layout/DetallesProducto';
 
-import {FirebaseContext} from '../firebase';
+import useProductos from '../hooks/useProductos';
 
 
 
 const Home = () => {
 
-
-  const [productos, guardarProduto] = useState([]);
-  const {firebase} = useContext(FirebaseContext);
-
-  useEffect(
-    () => {
-      const obtenerProductos = () => {
-        firebase.db.collection('productos').orderBy('date', 'desc').onSnapshot(manejarSnapshot)
-      }
-      obtenerProductos()
-    }, []);
-
-  function manejarSnapshot(snapshot){
-    const productos = snapshot.docs.map(doc => {
-      return {
-        id: doc.id,
-        ...doc.data()
-      }
-    });
-
-    guardarProduto(productos);
-  }
-  
+  const { productos } = useProductos('date');
 
 
   return (

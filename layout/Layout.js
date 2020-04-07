@@ -68,7 +68,6 @@ const Layout = (props) => {
 		/>
 
 		<Head>
-			<meta lang = "es"/>
 			<title>Product Hunt con Firebase y Next</title>
 		
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />

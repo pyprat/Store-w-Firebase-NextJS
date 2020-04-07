@@ -3,7 +3,7 @@ import Layout from '../layout/Layout';
 import FileUploader from 'react-firebase-file-uploader';
 import {css} from '@emotion/core';
 import { Formulario, Campo, InputSubmit, Error } from '../ui/Formulario';
-
+import Error404 from '../layout/404';
 // Router
 import Router from 'next/router';
 
@@ -108,6 +108,7 @@ const NuevoProducto = () => {
 	return (
 		<div>
 		<Layout>
+			{ !usuario ? <Error404/> : (
 		<> 
 	
 		  <h1
@@ -208,6 +209,7 @@ const NuevoProducto = () => {
 			  {error && <Error>{error}</Error>}
 		  </Formulario>
 		</>
+		)}
 		</Layout>
 	  </div>
 	)
